@@ -1,0 +1,59 @@
+let memory = 0;
+
+function appendToDisplay(value) {
+    const display = document.getElementById('display');
+    display.value += value;
+}
+
+function clearDisplay() {
+    const display = document.getElementById('display');
+    display.value = '';
+}
+
+function calculate() {
+    const display = document.getElementById('display');
+    try {
+        display.value = eval(display.value.replace(/×/g, '*').replace(/-/g, '-'));
+    } catch (error) {
+        display.value = 'Lỗi!';
+    }
+}
+
+function calculateSquare() {
+    const display = document.getElementById('display');
+    const value = parseFloat(display.value);
+    if (!isNaN(value)) {
+        display.value = value * value;
+    }
+}
+
+function calculateSquareRoot() {
+    const display = document.getElementById('display');
+    const value = parseFloat(display.value);
+    if (!isNaN(value) && value >= 0) {
+        display.value = Math.sqrt(value);
+    } else {
+        display.value = 'Lỗi!';
+    }
+}
+
+function memoryPlus() {
+    const display = document.getElementById('display');
+    const value = parseFloat(display.value);
+    if (!isNaN(value)) {
+        memory += value;
+    }
+}
+
+function memoryMinus() {
+    const display = document.getElementById('display');
+    const value = parseFloat(display.value);
+    if (!isNaN(value)) {
+        memory -= value;
+    }
+}
+
+function recallMemory() {
+    const display = document.getElementById('display');
+    display.value += memory;
+}
